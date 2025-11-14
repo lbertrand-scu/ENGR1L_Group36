@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+	<title>Group 36 - Robotic Hand</title>
+	<link rel="stylesheet" type="text/css" href="handWebsiteStyle.css">
+</head>
+
+<body>
+	<h1>Group 36 - Robotic Hand Design</h1>
+	<h3>Group Members: Lily Bertrand, Tongtong Wang, Tessa Dekker</h3>
+
+	<!--Shows the schematic at the top of the page-->
+	<div class="schematic">
+		<img src="Figure0.png" alt="Figure 0. A schematic of the robot hand" width="700">
+		<p class="figure">Figure 0. A schematic of the robot hand.</p>
+	</div>
+
+	<!--Shows the code at the top of the page to the right of the schematic-->
+	<div class="code">
+		<br><br>
+		<span class="codeRed">#include&nbsp</span>
+		<span class="codeGreen">&ltServo.h&gt&nbsp</span>
+		<span class="codeGray">// include the Servo library</span>
+
+		<br><br>
+
+		<span class="codeBlack">Servo myservo;&nbsp</span>
+		<span class="codeGray">// create the servo object</span>
+
+		<br><br>
+
+		<span class="codeRed">void</span><span class="codePurple">&nbspsetup</span><span class="codeBlack">()</span>
+
+		<br>
+
+		<span class="codeBlack">{</span>
+
+		<br>
+
+		<span class="codePurple">&nbsp&nbsppinMode</span><span class="codeBlack">(A0, INPUT);</span>
+		<span class="codeGray">&nbsp// set A0 as analog pin for reading potentiometer value</span>
+
+		<br>
+
+		<span class="codeBlue">myservo</span><span class="codeBlack">.</span><span class="codePurple">attach</span><span class="codeBlack">(</span><span class="codeBlue">3</span><span class="codeBlack">);</span>
+		<span class="codeGray">&nbsp// attaches the servo on pin 3 to a servo object</span>
+
+		<br>
+
+		<span class="codeBlack">}</span>
+
+		<br><br>
+
+		<span class="codeRed">void</span><span class="codePurple">&nbsploop</span><span class="codeBlack">()</span>
+
+		<br>
+
+		<span class="codeBlack">{</span>
+
+		<br><br>
+
+		<span class="codeRed">&nbsp&nbspint</span><span class="codeBlack">&nbsppos</span><span class="codeRed">&nbsp=&nbsp</span><span class="codePurple">analogRead</span><span class="codeBlack">(A0);</span>
+		<span class="codeGray">&nbsp// variable to store the servo position</span>
+
+		<br>
+
+		<span class="codeBlue">myservo</span><span class="codeBlack">.</span><span class="codePurple">write</span><span class="codeBlack">(</span><span class="codePurple">map</span><span class="codeBlack">(pos,</span><span class="codeBlue">0</span><span class="codeBlack">,</span><span class="codeBlue">1023</span><span class="codeBlack">,</span><span class="codeBlue">0</span><span class="codeBlack">,</span><span class="codeBlue">180</span><span class="codeBlack">));</span>
+		<span class="codeGray">&nbsp// map the 0 to 1023 value of the potentiometer to the 0 to 180 degrees for the servo, set the servo as the mapped angle</span>
+
+		<br><br>
+
+		<span class="codeBlack">}</span>
+
+		<p class="figure"><br>Figure 1. Code that rotates the servo based on potentiometer values.</p>
+	</div>
+
+		<img class="meme" src="funnyCat.jpg" width="7">
+		<img class="gear1" src="gear.webp" width="150">
+		<img class="gear2" src="gear.webp" width="100">
+		<img class="tools" src="tools.png" width="200">
+		<img class="hammer" src="hammer.png" width="225">
+		<img class="safety" src="safety.png" width="250">
+		<img class="ruler" src="ruler.png" width="200">
+		<img class="drill" src="drill.png" width="200">
+		<img class="tape" src="tape.png" width="200">
+		<img class="crimp" src="crimp.png" width="250">
+
+	<div class="initialOverall">
+
+		<h2 class="initial">Initial Design</h2>
+
+	<div class="initialText">
+		<p class="initial">We decided to keep our design simple. While we were originally planning to create a hand that would open and close around the ping pong ball, we realized using the "chop stick technique" was more efficient, easier to build, faster to build, and still executed the task. From there we realized this technique was best for use, using tape, we fixed one arm to the base of the servo, and fixed another arm to the sweeper of the servo using tape (Figures 2 and 3). The servo is attached to the arduino, which sets its angle based on readings from a potentiometer. As seen in the schematic (Figure 0), the potentiometer is connected to analog pin A0, and our servo data pin is connected to PWM pin D3. As seen in the code (Figure 1), we first imported the servo library which we will use to control the servo. We set the potentiometer pin as input and attach the servo data pin to the servo object. Then in the forever loop, we read the value of the potentiometer, then map it using the map function from a value which ranges from (0 to 1023) to (0 to 180) degrees that is required for the servo.</p>
+	</div>
+
+	<div class="initialPhoto">
+		<p class="figure">Figure 2. Prototype design.</p>
+		<img class="pictureOne" src="Figure2.jpg" alt="Figure 2. Prototype design." width="600" height="400">
+	</div>
+
+	<div class="initialVideo">
+		<video class="initial" width="600" autoplay muted loop>
+			<source src="Initial.mp4" type="video/mp4">
+		</video>
+		<p class="figure">Figure 3. Video for protoype.</p>
+	</div>
+
+</div>
+
+<div class="finalOverall">
+
+	<h2 class="final">Final Design</h2>
+
+	<div class="finalPhoto">
+		<p class="figure">Figure 4. Final design.</p>
+		<img class="pictureTwo" class="picture" src="Figure4.jpg" alt="Figure 4. Final design." width="600" height="400">	
+	</div>
+	
+	<div class="finalText">
+		<p class="final">Our prototype design used two straws as arms (Figure 1), and after analyzing what worked well and what didn't work in our prototype we made a few simple add ons and changes. We utilized the same "chop stick technique" that we used in our prototype, and then added flat pieces of styrofoam to the ends of it. This created a larger surface area to grab the ping pong ball (Figure 4). We still knew that because of the materials there was not quite enough friction to pick up the ball, therefore we added the rubber band for some material resistance. The result is that we were able to simply and quickly pick up the ball, drop it, pick it up, and drop it again (Figure 5). By changing the angle of the servo, we can open and close the arm to pick up and release the ping pong balls. The Arduino reads the value of the potentiometer, then maps the value degrees. When we change the value on the potentiometer, or twist the dial, it moves the motor, and therefore moves the straw attached to the motor.</p>
+	</div>
+
+	<div class="finalVideo">
+		<video class="final" width="600" autoplay muted loop>
+			<source src="Final.mp4" type="video/mp4">
+		</video>
+		<p class="figure">Figure 5. Video for final design working.</p>
+	</div>
+
+</div>
+
+</body>
+
+</html>
